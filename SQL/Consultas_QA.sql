@@ -1,3 +1,7 @@
+-- ==========================================
+-- USUÁRIOS
+-- ==========================================
+
 -- Verificar usuário cadastrado
 
 SELECT *
@@ -13,14 +17,6 @@ FROM usuarios;
 
 ------------------------------------------------
 
--- Verificar produtos disponíveis
-
-SELECT *
-FROM produtos
-ORDER BY preco ASC;
-
-------------------------------------------------
-
 -- Buscar usuários de Manaus
 
 SELECT *
@@ -29,6 +25,64 @@ WHERE cidade = 'Manaus';
 
 ------------------------------------------------
 
+-- Usuários que começam com "Van"
+
+SELECT *
+FROM usuarios
+WHERE nome LIKE 'Van%';
+
+------------------------------------------------
+
+-- Usuários de Manaus com idade maior que 20 anos
+
+SELECT *
+FROM usuarios
+WHERE cidade = 'Manaus'
+AND idade > 20;
+
+------------------------------------------------
+
+-- Usuários de Belém ou Fortaleza
+
+SELECT *
+FROM usuarios
+WHERE cidade = 'Belém'
+OR cidade = 'Fortaleza';
+
+
+
+-- ==========================================
+-- PRODUTOS
+-- ==========================================
+
+-- Produtos ordenados por preço
+
+SELECT *
+FROM produtos
+ORDER BY preco ASC;
+
+------------------------------------------------
+
+-- Produtos do mais caro para o mais barato
+
+SELECT *
+FROM produtos
+ORDER BY preco DESC;
+
+------------------------------------------------
+
+-- Buscar produto específico
+
+SELECT *
+FROM produtos
+WHERE produto = 'Monitor';
+
+
+
+-- ==========================================
+-- PEDIDOS
+-- ==========================================
+
 -- Contar pedidos
 
 SELECT COUNT(*)
@@ -36,7 +90,7 @@ FROM pedidos;
 
 ------------------------------------------------
 
--- Buscar pedidos aprovados
+-- Pedidos aprovados
 
 SELECT *
 FROM pedidos
@@ -54,3 +108,16 @@ FROM clientes
 JOIN pedidos
 
 ON clientes.id = pedidos.cliente_id;
+
+------------------------------------------------
+
+-- Clientes que possuem pedidos
+
+SELECT clientes.nome,
+compras.produto
+
+FROM clientes
+
+JOIN compras
+
+ON clientes.id = compras.cliente_id;
