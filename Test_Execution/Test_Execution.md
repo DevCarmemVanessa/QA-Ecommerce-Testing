@@ -1,28 +1,43 @@
 # Execução de Testes — ShopEasy
 
-| ID | Caso de Teste | Resultado | Status |
-|----|---------------|-----------|--------|
-| CT-001 | Cadastro com dados válidos | Conta criada com sucesso | Passou |
-| CT-002 | Cadastro com e-mail já existente | Mensagem exibida corretamente | Passou |
-| CT-003 | Cadastro com senha menor que 8 caracteres | Conta criada indevidamente | Falhou |
-| CT-004 | Cadastro com campos vazios | Campos obrigatórios identificados | Passou |
-| CT-005 | Login com dados válidos | Usuário autenticado | Passou |
-| CT-006 | Login com senha inválida | Mensagem exibida | Passou |
-| CT-007 | Login com e-mail inexistente | Acesso negado | Passou |
-| CT-008 | Login com campos vazios | Campos obrigatórios exibidos | Passou |
+## Resumo da Execução
+
+| Métrica | Quantidade |
+|---------|------------|
+| Casos de Teste Executados | 8 |
+| Casos Aprovados | 7 |
+| Casos Reprovados | 1 |
+| Taxa de Aprovação | 87,5% |
 
 ---
 
-## Resumo da Execução
+## Casos Executados
 
-Total de casos executados: 8
+| ID | Caso de Teste | Resultado Esperado | Resultado Obtido | Status |
+|----|---------------|-------------------|------------------|--------|
+| CT-001 | Cadastro com dados válidos | Conta criada com sucesso | Conta criada com sucesso | ✅ Passou |
+| CT-002 | Cadastro com e-mail já existente | Exibir mensagem de erro | Mensagem exibida corretamente | ✅ Passou |
+| CT-003 | Senha menor que 8 caracteres | Bloquear cadastro | Conta criada indevidamente | ❌ Falhou |
+| CT-004 | Campos obrigatórios vazios | Exibir mensagens obrigatórias | Mensagens exibidas corretamente | ✅ Passou |
+| CT-005 | Login válido | Usuário autenticado | Usuário autenticado | ✅ Passou |
+| CT-006 | Senha inválida | Exibir erro de autenticação | Erro exibido corretamente | ✅ Passou |
+| CT-007 | E-mail inexistente | Acesso negado | Acesso negado | ✅ Passou |
+| CT-008 | Campos vazios no login | Solicitar preenchimento | Campos destacados corretamente | ✅ Passou |
 
-Passaram: 7
+---
 
-Falharam: 1
+## Defeitos Identificados
 
-Taxa de aprovação: 87,5%
+| ID | Descrição | Severidade | Prioridade |
+|----|-----------|------------|------------|
+| BUG-001 | Sistema aceita senha com menos de 8 caracteres | Crítica | Alta |
 
-Bug relacionado:
+---
 
-BUG-001
+## Conclusão
+
+A funcionalidade de cadastro apresentou uma falha crítica relacionada à validação de senha.
+
+Os demais fluxos testados apresentaram comportamento conforme esperado.
+
+O sistema possui uma taxa de aprovação de **87,5%**, necessitando correção do defeito identificado antes da liberação para produção.
